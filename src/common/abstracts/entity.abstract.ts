@@ -3,8 +3,8 @@ import { CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "type
 export class BaseEntity{
     @PrimaryGeneratedColumn("increment")
     id:number;
-    @CreateDateColumn({type:"time with time zone"})
+    @CreateDateColumn()
     created_at:Date;
-    @UpdateDateColumn({type:"time with time zone"})
+    @UpdateDateColumn()
     updated_at:Date;
 }

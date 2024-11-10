@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { TypeOrmConfig } from 'src/config/typeorm.config';
+import { CategoryModule } from '../category/category.module';
 
 @Module({
   imports: [
@@ -10,7 +11,8 @@ import { TypeOrmConfig } from 'src/config/typeorm.config';
       envFilePath:join(process.cwd(),".env"),
       isGlobal:true
     }),
-    TypeOrmModule.forRoot(TypeOrmConfig())
+    TypeOrmModule.forRoot(TypeOrmConfig()),
+    CategoryModule
   ],
   controllers: [],
   providers: [],
