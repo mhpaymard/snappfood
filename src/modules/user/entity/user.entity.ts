@@ -2,7 +2,7 @@ import { BaseEntity } from "src/common/abstracts/entity.abstract";
 import { EntityNames } from "src/common/enums/entity-name.enum";
 import { Column, Entity, JoinColumn, OneToMany, OneToOne} from "typeorm";
 import { UserAddressEntity } from "./address.entity";
-import { OTPEntity } from "./otp.entity";
+import { UserOTPEntity } from "./otp.entity";
 
 @Entity(EntityNames.User)
 export class UserEntity extends BaseEntity{
@@ -26,8 +26,8 @@ export class UserEntity extends BaseEntity{
     mobile_verify:boolean;
     @Column({nullable:true})
     otp_id:number;
-    @OneToOne(()=>OTPEntity,otp=>otp.user)
+    @OneToOne(()=>UserOTPEntity,otp=>otp.user)
     @JoinColumn({name:"otp_id"})
-    otp:OTPEntity;
+    otp:UserOTPEntity;
 
 }

@@ -6,7 +6,7 @@ import { CheckOtpDto, SendOtpDto } from './dto/auth.dto';
 import { randomInt } from 'crypto';
 import { TokensPayload } from './type/payload.type';
 import { JwtService } from '@nestjs/jwt';
-import { OTPEntity } from '../user/entity/otp.entity';
+import { UserOTPEntity } from '../user/entity/otp.entity';
 import { UserEntity } from '../user/entity/user.entity';
 import { AuthMessage, PublicMessages } from 'src/common/enums/messages.enum';
 
@@ -14,7 +14,7 @@ import { AuthMessage, PublicMessages } from 'src/common/enums/messages.enum';
 export class AuthService {
   constructor(
     @InjectRepository(UserEntity) private userRepository:Repository<UserEntity>,
-    @InjectRepository(OTPEntity) private otpRepository:Repository<OTPEntity>,
+    @InjectRepository(UserOTPEntity) private otpRepository:Repository<UserOTPEntity>,
     private jwtService:JwtService
   ){}
   async sendOtp(otpDto:SendOtpDto){

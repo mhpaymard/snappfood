@@ -1,5 +1,6 @@
 import { BaseEntity } from "src/common/abstracts/entity.abstract";
 import { EntityNames } from "src/common/enums/entity-name.enum";
+import { SupplierEntity } from "src/modules/supplier/entities/supplier.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 
 @Entity(EntityNames.Category)
@@ -21,4 +22,6 @@ export class CategoryEntity extends BaseEntity {
     parent:CategoryEntity;
     @OneToMany(()=>CategoryEntity,category=>category.parent)
     children:CategoryEntity[];
+    @OneToMany(()=>SupplierEntity,supllier=>supllier.category)
+    suppliers:SupplierEntity[];
 }

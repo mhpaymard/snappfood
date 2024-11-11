@@ -5,11 +5,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { UserEntity } from '../user/entity/user.entity';
-import { OTPEntity } from '../user/entity/otp.entity';
+import { UserOTPEntity } from '../user/entity/otp.entity';
 
 @Module({
   imports:[
-    TypeOrmModule.forFeature([UserEntity,OTPEntity])
+    TypeOrmModule.forFeature([UserEntity,UserOTPEntity])
   ],
   controllers: [AuthController],
   providers: [AuthService,JwtService,ConfigService],

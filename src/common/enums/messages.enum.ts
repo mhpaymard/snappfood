@@ -35,5 +35,6 @@ export enum PublicMessages{
 export enum ConflictMessages{
     CategoryTitle="عنوان دسته بندی تکراری می باشد",
     CategorySlug="اسلاگ دسته بندی تکراری می باشد",
-    Email="این ایمیل توسط شخص دیگری استفاده شده است"
+    Email="این ایمیل توسط شخص دیگری استفاده شده است",
+    SupplierAccountPhone="فروشنده دیگری با این شماره موبایل وجود دارد"
 }
