@@ -1,6 +1,7 @@
 export enum BadRequestMessage{
     InValidLoginData="اطلاعات ارسال شده برای ورود صحیح نمی باشد",
-    InValidRegisterData="اطلاعات ارسال شده برای ثبت نام صحیح نمی باشد"
+    InValidRegisterData="اطلاعات ارسال شده برای ثبت نام صحیح نمی باشد",
+    
 }
 export enum AuthMessage{
     NotFoundAccount="حساب کاربری یافت نشد",
@@ -19,7 +20,9 @@ export enum NotFoundMessage{
 
 }
 export enum ValidationMessage{
-    InvalidImageFormat="فرمت تصویر باید jpg یا png باشد"
+    InvalidImageFormat="فرمت تصویر باید jpg یا png باشد",
+    InvalidPhoneNumber="شماره موبایل الزامی است",
+    InvalidOtpCode="کد وارد شده معتبر نمی باشد"
 }
 export enum PublicMessages{
     SendOtp="کد با موفقیت ارسال شد",
