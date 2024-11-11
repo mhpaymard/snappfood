@@ -4,3 +4,6 @@ export function isBoolean(value:any){
 export function toBoolean(value:any){
     return [true,"true"].includes(value)?true:false;
 }
+export function isNumber(value:any){
+    return !isNaN(parseInt(value.toString()))
+}

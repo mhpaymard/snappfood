@@ -14,6 +14,6 @@ export function TypeOrmConfig():TypeOrmModuleOptions{
         entities:[
             "dist/**/**/**/*.entity{.ts,.js}",
             "dist/**/**/*.entity{.ts,.js}",
-        ]
+        ],
     }
 }

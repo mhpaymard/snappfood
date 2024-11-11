@@ -10,6 +10,8 @@ export class CategoryEntity extends BaseEntity {
     slug:string;
     @Column()
     image:string;
+    @Column({nullable:true})
+    image_key:string;
     @Column()
     show:boolean;
     @Column({nullable:true})

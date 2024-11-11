@@ -14,7 +14,9 @@ export enum AuthMessage{
 export enum NotFoundMessage{
     NotFound="موردی یافت نشد",
     NotFoundCategory="دسته بندی یافت نشد",
-    NotFoundUser="کاربری یافت نشد"
+    NotFoundUser="کاربری یافت نشد",
+    NotFoundCategorySlug="دسته بندی ای با این ایدی وجود ندارد",
+
 }
 export enum ValidationMessage{
     InvalidImageFormat="فرمت تصویر باید jpg یا png باشد"
