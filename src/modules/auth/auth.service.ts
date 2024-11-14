@@ -18,11 +18,11 @@ export class AuthService {
     private jwtService:JwtService
   ){}
   async sendOtp(otpDto:SendOtpDto){
-    const {mobile} = otpDto;
-    let user = await this.userRepository.findOneBy({mobile});
+    const {phone} = otpDto;
+    let user = await this.userRepository.findOneBy({phone});
     if(!user){
       user = this.userRepository.create({
-        mobile
+        phone
       });
       user = await this.userRepository.save(user);
     }
@@ -34,10 +34,10 @@ export class AuthService {
 
   }
   async checkOtp(otpDto:CheckOtpDto){
-    const {mobile,code} = otpDto;
+    const {phone,code} = otpDto;
     const user = await this.userRepository.findOne(
       {
-        where:{mobile},
+        where:{phone},
         relations:{otp:true}
       }
     );
@@ -48,7 +48,7 @@ export class AuthService {
     await this.otpRepository.update({id:user.otp_id},{expires_in:new Date()});
     const {accessToken,refreshToken} = this.makeTokenForUser({
       id:user.id,
-      mobile
+      phone
     })
     return {
       message: PublicMessages.LoggedIn,

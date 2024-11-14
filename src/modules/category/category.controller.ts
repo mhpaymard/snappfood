@@ -22,7 +22,7 @@ export class CategoryController {
     @UploadedFile(new ParseFilePipe({
       validators:[
         new MaxFileSizeValidator({maxSize:FileMaxSizes.Image}),
-        new FileTypeValidator({fileType:"image/*"})
+        new FileTypeValidator({fileType:FileTypes.Image})
       ]
     })) image:Express.Multer.File,
   ) {

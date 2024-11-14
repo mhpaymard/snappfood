@@ -1,4 +1,4 @@
 export type TokensPayload = {
-    mobile:string;
+    phone:string;
     id:number;
 }

@@ -1,21 +1,24 @@
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common";
-import { isJWT } from "class-validator";
-import { Request } from "express";
-import { Observable } from "rxjs";
-import { AuthService } from "../auth.service";
+import { AuthService } from "src/modules/auth/auth.service";
+import {Request} from "express";
 import { AuthMessage } from "src/common/enums/messages.enum";
-
+import { isJWT } from "class-validator";
+import { SupplierService } from "../supplier.service";
 @Injectable()
-export class AuthGuard implements CanActivate{
-    constructor(private authService:AuthService){}
-    async canActivate(context: ExecutionContext) {
+export class SupplierAuthGuard implements CanActivate{
+    constructor(private supplierService:SupplierService){}
+    async canActivate(context: ExecutionContext) {Request
         const httpContext = context.switchToHttp();
         const request:Request = httpContext.getRequest();
+        const token = this.extractToken(request);
+        request.user = await this.supplierService.validateAccessToken(token);
+        return true;
+    }
+    protected extractToken(request:Request):string{
         const {authorization} = request.headers;
         if(!authorization || authorization.trim() == "") throw new UnauthorizedException(AuthMessage.LoginRequired);
         const [bearer,token] = authorization.split(" ");
         if(bearer?.toLowerCase() !== "bearer" || !token || !isJWT(token)) throw new UnauthorizedException(AuthMessage.LoginRequired);
-        request.user = await this.authService.validateAccessToken(token);
-        return true;
+        return token;
     }
 }

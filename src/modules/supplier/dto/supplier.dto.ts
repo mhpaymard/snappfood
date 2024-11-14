@@ -1,5 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { IsMobilePhone, Length } from "class-validator";
+import { IsEmail, IsIdentityCard, IsMobilePhone, Length } from "class-validator";
 import { ValidationMessage } from "src/common/enums/messages.enum";
 
 export class SupplierSignupDto {
@@ -21,4 +21,20 @@ export class SupplierSignupDto {
     phone:string;
     @ApiPropertyOptional()
     invite_code:string;
+}
+
+export class SupplementaryInformationDto{
+    @ApiProperty()
+    @IsEmail()
+    email:string;
+    @ApiProperty()
+    @IsIdentityCard("IR")
+    national_code:string;
+}
+
+export class UploadDocumentsDto{
+    @ApiProperty({format:"binary"})
+    contract:string;
+    @ApiProperty({format:"binary"})
+    personal_image:string;
 }

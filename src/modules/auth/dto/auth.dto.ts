@@ -5,13 +5,13 @@ import { ValidationMessage } from "src/common/enums/messages.enum";
 export class SendOtpDto{
     @ApiProperty()
     @IsMobilePhone("fa-IR",{},{message:ValidationMessage.InvalidPhoneNumber})
-    mobile:string;
+    phone:string;
 }
 
 export class CheckOtpDto{
     @ApiProperty()
     @IsMobilePhone("fa-IR",{},{message:ValidationMessage.InvalidPhoneNumber})
-    mobile:string;
+    phone:string;
     @ApiProperty()
     @IsString()
     @Length(5,5,{message:ValidationMessage.InvalidOtpCode})

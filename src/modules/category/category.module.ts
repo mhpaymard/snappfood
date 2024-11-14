@@ -12,5 +12,6 @@ import { S3Module } from '../s3/s3.module';
   ],
   controllers: [CategoryController],
   providers: [CategoryService],
+  exports:[CategoryService,TypeOrmModule]
 })
 export class CategoryModule {}
